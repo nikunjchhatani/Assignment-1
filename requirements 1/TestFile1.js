@@ -6,3 +6,4 @@ console.log(isLeapYear(2020)); // Should return true
 
 // Testing a non-leap year
 console.log(isLeapYear(2021)); // Should return false
+
