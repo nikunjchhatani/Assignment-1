@@ -1,56 +1,51 @@
-import fs from 'fs/promises';
-
-(async () => {
-  try {
-    // Read the contents of response.json asynchronously
-    const jsonData = await fs.readFile('response.json', 'utf-8');
-  
-    // Parse the JSON data into a JavaScript object
-    const response = JSON.parse(jsonData);
-  
-    console.log(response); // To verify the content
-    
-    // Now you can use the 'response' variable for further operations
-    const mappedArray = response.map(item => {
-        return { "name": item.name, "year": item.year };
-    });
-
-    console.log("Mapped Array:");
-    console.log(mappedArray);
-
-    const filteredArray = response.filter(item => item.year > 2020);
-  
-    console.log("\nFiltered Array (Year > 2020):");
-    console.log(filteredArray);
-  
-  } catch (error) {
-    console.error('Error:', error);
+const response = [
+  {
+      "name": "Amit",
+      "city": "Mumbai",
+      "skills": [
+          "Actng",
+          "Singing",
+          "Dancing"
+      ],
+      "vehicle": {
+          "model": "BMW",
+          "year": 2021
+      }
+  },
+  {
+      "name": "Rahul",
+      "city": "Jaipur",
+      "skills": [
+          "Swiming",
+          "Walking",
+          "Dancing"
+      ],
+      "vehicle": {
+          "model": "Scoda",
+          "year": 2019
+      }
+  },
+  {
+      "name": "Vijay",
+      "city": "Pune",
+      "skills": [
+          "Sarcasm",
+          "Debate",
+          "RTI"
+      ],
+      "vehicle": {
+          "model": "M80",
+          "year": 1999
+      }
   }
-})();
+];
 
+// Using map to create a new array of objects with only name and year properties
+const mappedData = response.map(item => ({ name: item.name, year: item.vehicle.year }));
 
+// Using filter to create a new array containing only objects with a year higher than 2020
+const filteredData = response.filter(item => item.vehicle.year > 2020);
 
-// Assuming response.json is already loaded and stored in the variable response
-
-// Simulating response.json data
-/*const response = [
-    { "name": "Item 1", "year": 2019 },
-    { "name": "Item 2", "year": 2021 },
-    { "name": "Item 3", "year": 2022 },
-    { "name": "Item 4", "year": 2020 },
-    { "name": "Item 5", "year": 2023 }
-];*/
-
-// Using map function to create a list of objects with only 'name' and 'year' properties
-const mappedArray = response.map(item => {
-    return { "name": item.name, "year": item.year };
-});
-
-console.log("Mapped Array:");
-console.log(mappedArray);
-
-// Using filter function to filter out objects with 'year' higher than 2020
-const filteredArray = response.filter(item => item.year > 2020);
-
-console.log("\nFiltered Array (Year > 2020):");
-console.log(filteredArray);
+// Printing the resulting arrays
+console.log('Mapped data:', mappedData);
+console.log('Filtered data:', filteredData);
