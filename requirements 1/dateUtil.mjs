@@ -1,11 +1,7 @@
 // Function to check if a year is a leap year
 function isLeapYear(year) {
-    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 }
 
-// Exporting the function
-export { isLeapYear };
+// Exporting the function as a default export
+export default isLeapYear;
